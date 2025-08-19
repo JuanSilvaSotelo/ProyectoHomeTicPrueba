@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- pom.xml - Archivo de configuración del proyecto Maven para el backend -->
+<!-- Define la estructura del proyecto, dependencias y plugins de construcción. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<!-- Herencia del proyecto padre de Spring Boot, que proporciona configuraciones por defecto y gestión de dependencias. -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.2.5</version>
+		<relativePath/> <!-- busca el padre desde el repositorio -->
+	</parent>
+	<!-- Información del proyecto -->
+	<groupId>com.ventas</groupId>
+	<artifactId>ventas-backend</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>ventas-backend</name>
+	<description>Backend para la aplicación de ventas web</description>
+	<properties>
+		<!-- Versión de Java utilizada para compilar el proyecto. -->
+		<java.version>21</java.version>
+	</properties>
+	<dependencies>
+		<!-- Dependencias del proyecto -->
+		<dependency>
+			<groupId>com.stripe</groupId>
+			<artifactId>stripe-java</artifactId>
+			<version>20.77.0</version>
+		</dependency>
+		<!-- Spring Boot Starter Data JPA para la persistencia de datos con JPA y Hibernate. -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<!-- Spring Boot Starter Web para construir aplicaciones web y RESTful. -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!-- Spring Boot Starter Security para la autenticación y autorización. -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<!-- Conector JDBC para MySQL. -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.33</version>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- Spring Boot Starter Test para pruebas de aplicaciones Spring Boot. -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.10.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.10.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>5.7.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<version>5.7.0</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<!-- Plugins de construcción -->
+		<plugins>
+			<!-- Plugin de Spring Boot Maven para empaquetar la aplicación como un JAR ejecutable. -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<!-- Argumentos JVM para establecer la zona horaria a UTC. -->
+					<jvmArguments>-Duser.timezone=UTC</jvmArguments>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!-- Plugin de Checkstyle Maven para aplicar reglas de estilo de código. -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>3.3.1</version>
+					<executions>
+						<execution>
+							<id>validate</id>
+							<phase>validate</phase>
+							<goals>
+								<goal>check</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<!-- Ubicación del archivo de configuración de Checkstyle. -->
+						<configLocation>checkstyle.xml</configLocation>
+						<!-- Codificación de los archivos fuente. -->
+						<encoding>UTF-8</encoding>
+						<!-- Muestra la salida de Checkstyle en la consola. -->
+						<consoleOutput>true</consoleOutput>
+						<!-- Falla la construcción si se encuentran errores de Checkstyle. -->
+						<failsOnError>true</failsOnError>
+						<!-- Deshabilita la generación de enlaces cruzados. -->
+						<linkXRef>false</linkXRef>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>

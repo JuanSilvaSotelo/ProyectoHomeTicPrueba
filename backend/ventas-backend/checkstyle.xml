@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- checkstyle.xml - Archivo de configuración de Checkstyle para el backend -->
+<!-- Define las reglas de estilo de código que se aplicarán a los archivos Java. -->
+<!DOCTYPE module PUBLIC
+    "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+    "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<!-- Módulo principal de Checkstyle que contiene todas las comprobaciones. -->
+<module name="Checker">
+    <!-- Propiedad para establecer la codificación de caracteres de los archivos fuente. -->
+    <property name="charset" value="UTF-8"/>
+    <!-- Propiedad para establecer la severidad de los problemas encontrados (warning, error, info). -->
+    <property name="severity" value="warning"/>
+    <!-- Propiedad para especificar las extensiones de archivo a procesar. -->
+    <property name="fileExtensions" value="java"/>
+
+    <!-- Módulo para verificar la longitud de las líneas. -->
+    <module name="LineLength">
+        <!-- Longitud máxima permitida para una línea. -->
+        <property name="max" value="120"/>
+    </module>
+    <!-- Módulo TreeWalker para recorrer el árbol de sintaxis abstracta (AST) y aplicar comprobaciones. -->
+    <module name="TreeWalker">
+    </module>
+</module>
